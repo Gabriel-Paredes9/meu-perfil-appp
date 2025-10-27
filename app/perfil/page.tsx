@@ -4,7 +4,7 @@ import { useState } from "react";
 import UserProfileCard from "@/components/UserProfileCard";
 import { fetchUserData } from "@/lib/data";
 import { UserProfile } from "@/lib/types";
-import styles from "./styles.module.css";
+import { Button, Headline } from "@zeiss/beyond-online-react";
 
 const PerfilPage = () => {
     // Estados para controlar o componente
@@ -35,41 +35,39 @@ const PerfilPage = () => {
     };
 
     return (
-        <main className="flex flex-col justify-center items-center min-h-screen bg-[#F4F7F6] p-5">
-            <h1 className="text-[#333] mb-8 font-[Segoe_UI,Tahoma,Geneva,Verdana,sans-serif] font-light text-[2.5em]">
-                Buscar Perfil de Usuário
-            </h1>
+        <main>
+            <Headline
+                headline= "Buscar Perfil de Usuário"
+                size="4xl"
+            />
 
             {/* Formulário de Busca */}
-            <div className="flex gap-2.5 mb-10 w-full max-w-[500px]">
+            <div>
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Digite o e-mail do usuário"
-                    className={styles.searchInput}
                 />
-                <button
+                <Button
                     onClick={handleSearch}
                     disabled={isLoading || !email} // Desabilita o botão se estiver carregando ou se o input estiver vazio
-                    className={`px-5 py-3 rounded-lg text-white text-base font-medium transition-colors duration-200 ${isLoading || !email
-                        ? 'bg-[#ccc] cursor-not-allowed'
-                        : 'bg-[#0070f3] hover:bg-[#005bb5] cursor-pointer'
-                        }`}
+                    variant="primary"
                 >
                     {isLoading ? 'Buscando...' : 'Buscar'}
-                </button>
+                </Button>
             </div>
 
             {/* Área de Resultados */}
-            <div className="min-h-[300px] w-full flex flex-col items-center">
+            <div>
                 {/* Mostra mensagem de erro, se houver */}
-                {error && <p className="text-[#d32f2f] bg-[#ffcdd2] p-4 rounded-lg text-center">{error}</p>}
+                {error && <p>{error}</p>}
 
                 {/* Mostra o card do usuário, se os dados foram carregados */}
                 {userProfile && <UserProfileCard user={userProfile} />}
             </div>
         </main>
+        
     );
 };
 

@@ -12,41 +12,40 @@ type UserProfileCardProps = {
 const UserProfileCard = ({ user }: UserProfileCardProps) => {
 
     return (
-        <div className="w-full max-w-md rounded-xl bg-white p-6 text-center shadow-lg">
-            <div className="mb-4">
+        <div>
+            <div>
                 {user.urlphoto &&(
                 <Image
                     src={user.urlphoto}
                     alt={`Foto de ${user.nome}`}
                     width={150}
                     height={150}
-                    className="mx-auto rounded-full border-4 border-gray-200"
                 />)}
             </div>
             <div>
-                <h2 className="text-2xl font-bold text-gray-800">{user.nome}</h2>
-                <p className="mb-6 text-gray-500">@{user.login}</p>
+                <h2 >{user.nome}</h2>
+                <p >@{user.login}</p>
 
-                <div className="grid grid-cols-2 gap-4 text-left">
-                    <div className="info-item">
-                        <span className="block text-sm font-bold text-gray-600">ID:</span>
+                <div >
+                    <div >
+                        <span >ID:</span>
                         <span>{user.idusuario}</span>
                     </div>
-                    <div className="info-item">
-                        <span className="block text-sm font-bold text-gray-600">CPF:</span>
+                    <div >
+                        <span >CPF:</span>
                         <span>{formatarCPF(user.cpf)}</span>
                     </div>
-                    <div className="info-item">
-                        <span className="block text-sm font-bold text-gray-600">Celular:</span>
+                    <div >
+                        <span >Celular:</span>
                         <span>{user.celular}</span>
                     </div>
-                    <div className="info-item">
-                        <span className="block text-sm font-bold text-gray-600">Nascimento:</span>
+                    <div >
+                        <span >Nascimento:</span>
                         <span>{formatarData(user.datanascimento)}</span>
                     </div>
                 </div>
 
-                <p className="mt-6 border-t border-gray-200 pt-4 text-sm text-gray-500">
+                <p>
                     Membro desde: {formatarData(user.datahoracriacao)}
                 </p>
             </div>
