@@ -4,7 +4,9 @@ import { useState } from "react";
 import UserProfileCard from "@/components/UserProfileCard";
 import { fetchUserData } from "@/lib/data";
 import { UserProfile } from "@/lib/types";
-import { Button, Headline } from "@zeiss/beyond-online-react";
+import { Button, Headline, TextInput } from "@zeiss/beyond-online-react";
+
+
 
 const PerfilPage = () => {
     // Estados para controlar o componente
@@ -35,39 +37,42 @@ const PerfilPage = () => {
     };
 
     return (
-        <main>
-            <Headline
-                headline= "Buscar Perfil de Usuário"
-                size="4xl"
-            />
-
-            {/* Formulário de Busca */}
-            <div>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Digite o e-mail do usuário"
+        <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4">
+            <main className="w-100 space-y-4">
+                <Headline
+                    headline="Buscar Perfil de Usuário"
+                    size="l"
                 />
-                <Button
-                    onClick={handleSearch}
-                    disabled={isLoading || !email} // Desabilita o botão se estiver carregando ou se o input estiver vazio
-                    variant="primary"
-                >
-                    {isLoading ? 'Buscando...' : 'Buscar'}
-                </Button>
-            </div>
 
-            {/* Área de Resultados */}
-            <div>
-                {/* Mostra mensagem de erro, se houver */}
-                {error && <p>{error}</p>}
+                {/* Formulário de Busca */}
+                <div className="w-100 space-y-4">
+                    <TextInput
+                        label="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Digite o e-mail do usuário"
+                    />
+                    <Button
+                        onClick={handleSearch}
+                        disabled={isLoading || !email} // Desabilita o botão se estiver carregando ou se o input estiver vazio
+                        variant="primary"
+                    >
+                        {isLoading ? 'Buscando...' : 'Buscar'}
+                    </Button>
+                </div>
 
-                {/* Mostra o card do usuário, se os dados foram carregados */}
-                {userProfile && <UserProfileCard user={userProfile} />}
-            </div>
-        </main>
-        
+                {/* Área de Resultados */}
+                <div>
+                    {/* Mostra mensagem de erro, se houver */}
+                    {error && <p>{error}</p>}
+
+                    {/* Mostra o card do usuário, se os dados foram carregados */}
+                    {userProfile && <UserProfileCard user={userProfile} />}
+                </div>
+
+            </main>
+        </div>
     );
 };
 

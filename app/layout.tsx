@@ -1,4 +1,5 @@
 import { NextAuthProvider } from "./providers"; // Importe o provider
+import './globals.css';
 
 export default function RootLayout({
   children,
