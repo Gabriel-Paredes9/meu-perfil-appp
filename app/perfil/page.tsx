@@ -38,7 +38,7 @@ const PerfilPage = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4">
-            <main className="w-100 space-y-4">
+            <div className="w-100 space-y-4">
                 <Headline
                     headline="Buscar Perfil de Usuário"
                     size="l"
@@ -70,8 +70,9 @@ const PerfilPage = () => {
                     {/* Mostra o card do usuário, se os dados foram carregados */}
                     {userProfile && <UserProfileCard user={userProfile} />}
                 </div>
+                
 
-            </main>
+            </div>
         </div>
     );
 };

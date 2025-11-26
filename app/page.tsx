@@ -53,6 +53,7 @@ const LoginPage = () => {
                         label="Login"
                         id="login"
                         type="email"
+                        helperText="Digite seu e-mail"
                         value={login}
                         onChange={(e) => setlogin(e.target.value)}
                         required
@@ -65,6 +66,8 @@ const LoginPage = () => {
                         label="Senha"
                         id="pass"
                         type="password"
+                        autoComplete="off"
+                        helperText="Digite sua senha"
                         value={pass}
                         onChange={(e) => setpass(e.target.value)}
                         required
