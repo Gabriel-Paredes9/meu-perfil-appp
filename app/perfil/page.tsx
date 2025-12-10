@@ -4,7 +4,7 @@ import { useState } from "react";
 import UserProfileCard from "@/components/UserProfileCard";
 import { fetchUserData } from "@/lib/data";
 import { UserProfile } from "@/lib/types";
-import { Button, Headline, Modal, TextInput } from "@zeiss/beyond-online-react";
+import { Button, Headline, Modal, TextInput, LoadingSpinner } from "@zeiss/beyond-online-react";
 
 
 
@@ -69,23 +69,24 @@ const PerfilPage = () => {
                         disabled={isLoading || !email} // Desabilita o botão se estiver carregando ou se o input estiver vazio
                         variant="primary"
                     >
-                        {isLoading ? 'Buscando...' : 'Buscar'}
+                        {isLoading ? <LoadingSpinner size="s" /> : 'Buscar Perfil'}
                     </Button>
                 </div>
 
                 {/* Área de Resultados */}
-                <div>
-                    <Modal
+                <div >
+                    <Modal className="w-200 h-100 bg-opacity-75 flex items-center justify-center"
                         isOpen={estaAberto}
                         onClose={fecharModal}
                     >
 
-                        <div>
+                        <div className="space-y-5">
                             <Headline
                                 headline="Resultado da Busca"
                                 size="m"
                             />
                             <p>
+                                {isLoading ? <LoadingSpinner size="m" /> : 'Buscar Perfil'}
                                 {error && <p>{error}</p>}
                                 {userProfile && <UserProfileCard user={userProfile} />}
                             </p>
